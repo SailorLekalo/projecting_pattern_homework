@@ -21,15 +21,15 @@ class DeliveryFactory:
         pass
 
 class AutoDelivery(DeliverType):
-    def Deliver(cls):
+    def Deliver(self):
         print("Логика доставки автомобилем")
 
 class ShipDelivery(DeliverType):
-    def Deliver(cls):
+    def Deliver(self):
         print("Логика доставки кораблём")
 
 class PlaneDelivery(DeliverType):
-    def Deliver(cls):
+    def Deliver(self):
         print("Логика доставки самолётом")
 class AutoDeliveryFactory(DeliveryFactory):
     def CreateDelivery(self):
