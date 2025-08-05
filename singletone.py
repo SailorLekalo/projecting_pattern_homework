@@ -9,11 +9,11 @@
 
 
 ## DeepSeek отметил, что этому коду недостаёт защиты от повторной инициализации и поддержки многопоточности
-class Singletone():
+class Singletone:
     _instance = None
     _init_lock = None
     yay_variable = "something"
-    
+
     def __new__(self):
         if self._instance is None:
             self._instance = super(Singletone, self).__new__(self)
@@ -22,33 +22,36 @@ class Singletone():
     def yay(self):
         return self.yay_variable
 
-#Простейший пример, демонстрирующий функционал синглтона.
-a = Singletone() #мы создаём синглтон а
+
+# Простейший пример, демонстрирующий функционал синглтона.
+a = Singletone()  # мы создаём синглтон а
 print(a.yay())
+
 
 def some_def(i):
     if i == 0:
         return
     else:
-        #тут мы всякий раз создаём новый экземпляр, меняем переменную для него
-        temp = Singletone() 
+        # тут мы всякий раз создаём новый экземпляр, меняем переменную для него
+        temp = Singletone()
         temp.yay_variable = i
-        #а выводим переменную из экземпляра а
-        print(a.yay()) 
-        some_def(i-1)
-        
+        # а выводим переменную из экземпляра а
+        print(a.yay())
+        some_def(i - 1)
+
+
 some_def(10)
 
-class Tester():
+
+class Tester:
     tone = None
+
     def __init__(self):
         self.tone = Singletone()
+
     def return_tone(self):
         return self.tone.yay()
 
+
 test = Tester()
 print(test.return_tone())
-    
-
-
-        
